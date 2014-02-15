@@ -2,24 +2,53 @@
       href="../bower_components/mark-down/elements/mark-down.html">
 
 <link rel="import"
+      href="../bower_components/polymer-flex-layout/polymer-flex-layout.html">
+
+<link rel="import"
       href="../bower_components/dropbox-button/src/dropbox-button.html">
+
+<link rel="import"
+      href="../bower_components/polymer-localstorage/polymer-localstorage.html">
 
 <link rel="import"
       href="data-uri.html">
 
-<polymer-element name="early-bird" noscript attributes="filename text">
+<link rel="import"
+      href="dropbox-file.html">
+
+
+<polymer-element name="early-bird" attributes="filename text">
   <template>
-    <div class="controls">
-      <input type="text" class="filename" value="{{filename}}">
-      <dropbox-button buttonType="saver" appKey="1m5r2pqdprbkc8t"
-      fileName="{{filename + '.md'}}" href="{{uri}}">
-      </dropbox-button>
+    <link rel="stylesheet" href="early-bird.css">
+    
+    <div class="container">
+      <div class="controls">
+        <dropbox-file filename="{{filename}}" content="{{text}}">
+        </dropbox-file>
+        <dropbox-button buttonType="saver" appKey="1m5r2pqdprbkc8t"
+        fileName="{{filename + '.md'}}" href="{{uri}}">
+        </dropbox-button>
+      </div>
+      
+      <div class="editor">
+        <input type="text" class="filename" value="{{filename}}">
+        <div class="splitscreen">
+          <polymer-flex-layout></polymer-flex-layout>
+          <textarea value="{{text}}" flex></textarea>
+          <mark-down text="{{text}}" flex></mark-down>
+        </div>
+      </div>
     </div>
     
-    <div class="editor">
-      <mark-down-editor text="{{text}}"></mark-down-editor>
-    </div>
-
     <data-uri data="{{text}}" uri="{{uri}}"></data-uri>
+
+    <polymer-localstorage name="early-bird-filename" value="{{filename}}">
+    </polymer-localstorage>
+    <polymer-localstorage name="early-bird-text" value="{{text}}">
+    </polymer-localstorage>
+
   </template>
+  <script>
+  Polymer('early-bird');
+  </script>
 </polymer-element>

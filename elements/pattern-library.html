@@ -1,0 +1,421 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="pattern-library" attributes="useSlow">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+  </template>
+  <script>
+  Polymer('pattern-library', {
+    ready: function() {
+      this.style.backgroundImage = 'url('+this.getPattern()+')';
+    },
+    getPattern: function() {
+      var file = this.patternData_[1].file;
+      var url = 'http://thepatternlibrary.com/img/' + file;
+      return url;
+    },
+    patternData_: [
+      {
+        letter: 'a',
+        file: 'a.jpg',
+        name: 'Kale Salad',
+        creator: 'Claudio Guglieri',
+        creatorWeb: 'http://whydontwetry.com',
+        creatorTwitter: 'claudioguglieri'
+      },
+      {
+        letter: 'b',
+        file: 'b.jpg',
+        name: 'Fancy Pants',
+        creator: 'Anton Repponen',
+        creatorWeb: 'http://repponen.com',
+        creatorTwitter: 'repponen'
+      },
+      {
+        letter: 'c',
+        file: 'c.jpg',
+        name: 'Ripples',
+        creator: 'Claudio Guglieri',
+        creatorWeb: 'http://whydontwetry.com',
+        creatorTwitter: 'claudioguglieri'
+      },
+      {
+        letter: 'd',
+        file: 'd.png',
+        name: 'Leather Nunchuck',
+        creator: 'Claudio Guglieri',
+        creatorWeb: 'http://whydontwetry.com',
+        creatorTwitter: 'claudioguglieri'
+      },
+      {
+        letter: 'h',
+        file: 'h.jpg',
+        name: 'Chalkboard',
+        creator: 'Claudio Guglieri',
+        creatorWeb: 'http://whydontwetry.com',
+        creatorTwitter: 'claudioguglieri'
+      },
+      {
+        letter: 'l',
+        file: 'l.jpg',
+        name: 'Fiesta',
+        creator: 'Julien Bailly',
+        creatorWeb: 'http://julien-bailly.com/',
+        creatorTwitter: 'julien_bailly'
+      },
+      {
+        letter: 'm',
+        file: 'm.jpg',
+        name: 'Knitting',
+        creator: 'Julien Bailly',
+        creatorWeb: 'http://julien-bailly.com/',
+        creatorTwitter: 'julien_bailly'
+      },
+      {
+        letter: 'p',
+        file: 'p.gif',
+        name: 'Brijan',
+        creator: 'Brijan Powel',
+        creatorWeb: 'http://www.robothate.com',
+        creatorTwitter: 'brijanp'
+      },
+      {
+        letter: 'q',
+        file: 'q.png',
+        name: 'Naranjas',
+        creator: 'Natalia de Frutos',
+        creatorWeb: 'http://www.domestika.org/es/natalia_f_ramos/portfolio',
+        creatorTwitter: 'nataliadfrutos'
+      },
+      {
+        letter: 'r',
+        file: 'r.png',
+        name: 'Kiwis',
+        creator: 'Natalia de Frutos',
+        creatorWeb: 'http://www.domestika.org/es/natalia_f_ramos/portfolio',
+        creatorTwitter: 'nataliadfrutos'
+      },
+      {
+        letter: 's',
+        file: 's.png',
+        name: 'Cuadros',
+        creator: 'Natalia de Frutos',
+        creatorWeb: 'http://www.domestika.org/es/natalia_f_ramos/portfolio',
+        creatorTwitter: 'nataliadfrutos'
+      },
+      {
+        letter: 'j',
+        file: 'j.jpg',
+        name: 'Maze',
+        creator: 'Julien Bailly',
+        creatorWeb: 'http://julien-bailly.com/',
+        creatorTwitter: 'julien_bailly'
+      },
+      {
+        letter: 't',
+        file: 't.gif',
+        name: 'Cocina',
+        creator: 'Natalia de Frutos',
+        creatorWeb: 'http://www.domestika.org/es/natalia_f_ramos/portfolio',
+        creatorTwitter: 'nataliadfrutos'
+      },
+      {
+        letter: 'u',
+        file: 'u.png',
+        name: 'Wild Sea',
+        creator: 'Henry Daubrez',
+        creatorWeb: 'http://www.dogstudio.be',
+        creatorTwitter: 'upskydown'
+      },
+      {
+        letter: 'v',
+        file: 'v.png',
+        name: 'The Illusionist',
+        creator: 'Henry Daubrez',
+        creatorWeb: 'http://www.dogstudio.be',
+        creatorTwitter: 'upskydown'
+      },
+      {
+        letter: 'x',
+        file: 'x.png',
+        name: 'Magnus 2050',
+        creator: 'Kristoffer Brady',
+        creatorWeb: 'http://www.egosmoke.com',
+        creatorTwitter: 'egosmoke'
+      },
+      {
+        letter: 'y',
+        file: 'y.png',
+        name: 'Magnus 2051',
+        creator: 'Kristoffer Brady',
+        creatorWeb: 'http://www.egosmoke.com',
+        creatorTwitter: 'egosmoke'
+      },
+      {
+        letter: 'z',
+        file: 'z.png',
+        name: 'Magnus 2052',
+        creator: 'Kristoffer Brady',
+        creatorWeb: 'http://www.egosmoke.com',
+        creatorTwitter: 'egosmoke'
+      },
+      {
+        letter: 'aa',
+        file: 'aa.png',
+        name: 'NYC Candy',
+        creator: 'Claudio Guglieri',
+        creatorWeb: 'http://whydontwetry.com',
+        creatorTwitter: 'claudioguglieri'
+      },
+      {
+        letter: 'af',
+        file: 'af.png',
+        name: 'Bunting flag',
+        creator: 'Raul Varela',
+        creatorWeb: 'http://shonen.me',
+        creatorTwitter: 'shonenCMYK'
+      },
+      {
+        letter: 'ag',
+        file: 'ag.jpg',
+        name: 'Canvas Orange',
+        creator: 'Raul Varela',
+        creatorWeb: 'http://shonen.me',
+        creatorTwitter: 'shonenCMYK'
+      },
+      {
+        letter: 'ah',
+        file: 'ah.png',
+        name: 'Bicycles',
+        creator: 'Shaun Fox',
+        creatorWeb: 'http://shaunfox.com',
+        creatorTwitter: 'shaunrfox'
+      },
+      {
+        letter: 'ai',
+        file: 'ai.png',
+        name: 'Hodgepodge',
+        creator: 'Anatoliy Gromov',
+        creatorWeb: 'http://agromov.com',
+        creatorTwitter: 'agromov'
+      },
+      {
+        letter: 'ak',
+        file: 'ak.png',
+        name: 'Retro Furnish',
+        creator: 'Heury & Heury',
+        creatorWeb: 'http://heuryandheury.eu',
+        creatorTwitter: 'heuryheury'
+      },
+      {
+        letter: 'ap',
+        file: 'ap.jpg',
+        name: 'Jade',
+        creator: 'Jade Meneguel',
+        creatorWeb: 'http://portfolio.jademeneguel.com',
+        creatorTwitter: 'jademeneguel'
+      },
+      {
+        letter: 'aq',
+        file: 'aq.jpg',
+        name: 'Plaid',
+        creator: 'Alexey Tretina',
+        creatorWeb: 'http://www.tretina.ru',
+        creatorTwitter: 'squilacci'
+      },
+      {
+        letter: 'ar',
+        file: 'ar.png',
+        name: 'Kitty',
+        creator: 'Penny Yu',
+        creatorWeb: null,
+        creatorTwitter: null
+      }
+    ],
+    slowPatternData_: [
+      {
+        letter: 'ay',
+        file: 'ay.jpg',
+        name: 'Hotdogs',
+        creator: 'RomÃ¡n Jusdado',
+        creatorWeb: 'http://www.romanjusdado.com',
+        creatorTwitter: 'romanjusdado'
+      },
+      {
+        letter: 'ax',
+        file: 'ax.jpg',
+        name: 'Design Tools',
+        creator: 'Miguel Angel Avila',
+        creatorWeb: 'http://dribbble.com/geeklangel',
+        creatorTwitter: 'geeklangel'
+      },
+      {
+        letter: 'aw',
+        file: 'aw.png',
+        name: 'Green Goblin',
+        creator: 'Dmitry Grigorev',
+        creatorWeb: 'http://dgrigoriev.com/index.php/info',
+        creatorTwitter: 'alieneye'
+      },
+      {
+        letter: 'av',
+        file: 'av.gif',
+        name: 'raspberry lace',
+        creator: 'Ana Novakovic',
+        creatorWeb: 'http://ananovakovicdesign.com/',
+        creatorTwitter: 'Ana_Novakovic_'
+      },
+      {
+        letter: 'au',
+        file: 'au.jpg',
+        name: 'Isometropolis',
+        creator: 'Alan Geraghty',
+        creatorWeb: 'http://cargocollective.com/tigerpixel',
+        creatorTwitter: 'tigerpixel'
+      },
+      {
+        letter: 'g',
+        file: 'g.gif',
+        name: 'Alchemy',
+        creator: 'Anton Repponen',
+        creatorWeb: 'http://repponen.com',
+        creatorTwitter: 'repponen'
+      },
+      {
+        letter: 'n',
+        file: 'n.jpg',
+        name: 'Special Delivery',
+        creator: 'Matt Delbridge',
+        creatorWeb: 'http://mattdelbridge.com/',
+        creatorTwitter: 'matt_delbridge'
+      },
+      {
+        letter: 'i',
+        file: 'i.jpg',
+        name: 'White Wood',
+        creator: 'Claudio Guglieri',
+        creatorWeb: 'http://whydontwetry.com',
+        creatorTwitter: 'claudioguglieri'
+      },
+      {
+        letter: 'ab',
+        file: 'ab.png',
+        name: 'Sushi',
+        creator: 'Claudio Guglieri',
+        creatorWeb: 'http://whydontwetry.com',
+        creatorTwitter: 'claudioguglieri'
+      },
+      {
+        letter: 'o',
+        file: 'o.jpg',
+        name: 'Junk Mail',
+        creator: 'Matt Delbridge',
+        creatorWeb: 'http://mattdelbridge.com/',
+        creatorTwitter: 'matt_delbridge'
+      },
+      {
+        letter: 'e',
+        file: 'e.png',
+        name: 'Escape Flight',
+        creator: 'Claudio Guglieri',
+        creatorWeb: 'http://whydontwetry.com',
+        creatorTwitter: 'claudioguglieri'
+      },
+      {
+        letter: 'ac',
+        file: 'ac.png',
+        name: 'Subway Lines',
+        creator: 'Marc Anderson',
+        creatorWeb: 'http://www.marcbanderson.com/',
+        creatorTwitter: 'marcbanderson'
+      },
+      {
+        letter: 'w',
+        file: 'w.png',
+        name: 'è¼ªç´‹',
+        creator: 'Daniel Marcos Perujo',
+        creatorWeb: 'http://www.peruho.com/',
+        creatorTwitter: 'peruho'
+      },
+      {
+        letter: 'f',
+        file: 'f.jpg',
+        name: 'Dark Wood',
+        creator: 'Claudio Guglieri',
+        creatorWeb: 'http://whydontwetry.com',
+        creatorTwitter: 'claudioguglieri'
+      },
+      {
+        letter: 'ae',
+        file: 'ae.jpg',
+        name: 'Ocean',
+        creator: 'Jon Vlasach',
+        creatorWeb: 'http://colectiv.com/',
+        creatorTwitter: 'JonVlasach'
+      },
+      {
+        letter: 'am',
+        file: 'am.jpg',
+        name: 'Guglieri Speciale',
+        creator: 'Jon Vlasach',
+        creatorWeb: 'http://colectiv.com/',
+        creatorTwitter: 'JonVlasach'
+      },
+      {
+        letter: 'aj',
+        file: 'aj.png',
+        name: 'Geometrica',
+        creator: 'Guy Moorhouse',
+        creatorWeb: 'http://futurefabric.co.uk',
+        creatorTwitter: 'futurefabric'
+      },
+      {
+        letter: 'al',
+        file: 'al.png',
+        name: 'Glitch',
+        creator: 'Tim Green',
+        creatorWeb: 'http://destroywerk.com',
+        creatorTwitter: 'destroywerk'
+      },
+      {
+        letter: 'an',
+        file: 'an.jpg',
+        name: 'Asteroids',
+        creator: 'Sanja Kusturica',
+        creatorWeb: 'http://noumevon.com',
+        creatorTwitter: 'kustkunst'
+      },
+      {
+        letter: 'ao',
+        file: 'ao.gif',
+        name: 'Shattered Island',
+        creator: 'Julien Renvoye',
+        creatorWeb: 'http://www.julienrenvoye.com/',
+        creatorTwitter: 'julienrenvoye'
+      },
+      {
+        letter: 'as',
+        file: 'as.gif',
+        name: 'Neon Autumn',
+        creator: 'Dailey Crafton',
+        creatorWeb: 'http://daileycrafton.com',
+        creatorTwitter: 'daileycrafton'
+      },
+      {
+        letter: 'at',
+        file: 'at.png',
+        name: 'Celebration',
+        creator: 'Prabhu Kandavelu',
+        creatorWeb: null,
+        creatorTwitter: 'prabhuk1986'
+      }
+    ]
+  });
+  </script>
+</polymer-element>

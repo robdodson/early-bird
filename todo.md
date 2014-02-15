@@ -12,3 +12,6 @@ it should also sibling import polymer.html
 ---
 
 I'm resisting the urge to throw everything into one big polymer element even though I REALLY want to take advantage of the data bindings. But it feels wrong to just have a <my-app> element.
+
+I need a way to zero in on just on element and start devving it in my browser,
+then zoom back out to my entire app

@@ -1,0 +1,25 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import"
+      href="../bower_components/dropbox-button/src/dropbox-button.html">
+<link rel="import"
+      href="../bower_components/polymer-ajax/polymer-ajax.html">
+
+<polymer-element name="dropbox-file" attributes="filename content url">
+  <template>
+    <dropbox-button id="dbBtn" buttonType="chooser" appKey="1m5r2pqdprbkc8t"
+      linkType="direct" extensions="['.md', '.txt']">
+    </dropbox-button>
+    <polymer-ajax auto url="{{url}}" response="{{content}}"></polymer-ajax>
+  </template>
+  <script>
+  Polymer('dropbox-file', {
+    ready: function() {
+      this.$.dbBtn.success = function(res) {
+        // TODO: The filename should allow dots except for the last extension
+        this.filename = res[0].name.split('.').shift();
+        this.url = res[0].link;
+      }.bind(this);
+    }
+  });
+  </script>
+</polymer-element>

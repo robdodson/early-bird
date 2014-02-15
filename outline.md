@@ -1,6 +1,7 @@
 √ mark-down
-dropbox-button
+√ dropbox-button
 author-badge (gravatar-image?)
+local-storage
 character-count
 ek-progress-meter (or improved chart.js widget)
 github ribbon

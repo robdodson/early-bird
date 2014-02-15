@@ -4,7 +4,6 @@
   <script>
   Polymer('data-uri', {
     dataChanged: function() {
-      console.log('data changed');
       this.uri = 'data:text/plain;charset=utf-8;base64,' +
                   this.encode(this.data);
     },
