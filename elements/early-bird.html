@@ -1,0 +1,16 @@
+<polymer-element name="early-bird">
+  <template>
+    <div class="controls">
+      <input type="text" class="filename" value="{{filename}}">
+      <dropbox-button buttonType="saver" appKey="1m5r2pqdprbkc8t"
+      fileName="{{filename}}">
+      </dropbox-button>
+    </div>
+    
+    <div class="editor">
+      <mark-down-editor>Start typing...</mark-down-editor>
+    </div>
+
+    <data-uri target="mark-down-editor"></data-uri>
+  </template>
+</polymer-element>

@@ -1,0 +1,32 @@
+{
+  "name": "early-bird",
+  "version": "0.0.0",
+  "authors": [
+    "Rob Dodson <robdodson@google.com>"
+  ],
+  "description": "Writing markdown for much win",
+  "keywords": [
+    "markdown",
+    "polymer",
+    "web-components"
+  ],
+  "license": "MIT",
+  "homepage": "http://robdodson.me",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer-ui-elements": "Polymer/polymer-ui-elements#~0.2.0",
+    "polymer-elements": "Polymer/polymer-elements#~0.2.0",
+    "mark-down": "~0.4.0",
+    "marked": "~0.3.1",
+    "dropbox-button": "kashiro/dropbox-button"
+  },
+  "resolutions": {
+    "marked": "~0.2.10"
+  }
+}
