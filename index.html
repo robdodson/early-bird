@@ -7,35 +7,12 @@
     <script src="bower_components/platform/platform.js"></script>
     <link rel="import" href="bower_components/polymer/polymer.html">
     <!-- Import all the things! -->
-    <link rel="import" href="elements/elements.html">
+    <link rel="import" href="elements/early-bird.html">
   </head>
   <body>
-
-    <div class="controls">
-      <input type="text" class="filename" value="First Post">
-      <dropbox-button buttonType="saver" appKey="1m5r2pqdprbkc8t">
-      </dropbox-button>
-    </div>
-    
-    <div class="editor">
-      <mark-down-editor>Start typing...</mark-down-editor>
-    </div>
-
-    <data-uri target="mark-down-editor"></data-uri>
-
     <script src="bower_components/marked/lib/marked.js"></script>
-
-    <script>
-    var uri = document.querySelector('data-uri');
-    var editor = document.querySelector('mark-down-editor');
-    var btn = document.querySelector('dropbox-button');
-    var filename = document.querySelector('.filename');
-
-    var interval = setInterval(function() {
-      uri.data = editor.text;
-      btn.href = 'data:text/plain;charset=utf-8;base64,' + uri.uri;
-      btn.fileName = filename.value + '.md';
-    }, 100);
-    </script>
+    <early-bird filename="New Post"
+      text="# My latest creation"
+    ></early-bird>
   </body>
 </html>

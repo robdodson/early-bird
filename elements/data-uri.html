@@ -5,7 +5,8 @@
   Polymer('data-uri', {
     dataChanged: function() {
       console.log('data changed');
-      this.uri = this.encode(this.data);
+      this.uri = 'data:text/plain;charset=utf-8;base64,' +
+                  this.encode(this.data);
     },
     encode: function(str) {
       // utf8 to base64

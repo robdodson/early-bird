@@ -1,16 +1,25 @@
-<polymer-element name="early-bird">
+<link rel="import"
+      href="../bower_components/mark-down/elements/mark-down.html">
+
+<link rel="import"
+      href="../bower_components/dropbox-button/src/dropbox-button.html">
+
+<link rel="import"
+      href="data-uri.html">
+
+<polymer-element name="early-bird" noscript attributes="filename text">
   <template>
     <div class="controls">
       <input type="text" class="filename" value="{{filename}}">
       <dropbox-button buttonType="saver" appKey="1m5r2pqdprbkc8t"
-      fileName="{{filename}}">
+      fileName="{{filename + '.md'}}" href="{{uri}}">
       </dropbox-button>
     </div>
     
     <div class="editor">
-      <mark-down-editor>Start typing...</mark-down-editor>
+      <mark-down-editor text="{{text}}"></mark-down-editor>
     </div>
 
-    <data-uri target="mark-down-editor"></data-uri>
+    <data-uri data="{{text}}" uri="{{uri}}"></data-uri>
   </template>
 </polymer-element>
