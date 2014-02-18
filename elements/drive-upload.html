@@ -1,0 +1,116 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="drive-upload">
+  <template>
+    <!--Add a file picker for the user to start the upload process -->
+    <input type="file" id="filePicker" style="display: none;">
+    <input type="button" id="authorizeButton" style="display: none;" value="Authorize" />
+  </template>
+  <script>
+  (function (window, document, undefined) {
+    var CLIENT_ID = '383121005339-evr5p8ep74nq3ppauocsasu704grnetu.apps.googleusercontent.com';
+    var SCOPES = 'https://www.googleapis.com/auth/drive';
+
+    Polymer('drive-upload', {
+      ready: function() {
+        this.loadDrive();
+      },
+      loadDrive: function() {
+        var script = document.createElement('script');
+        var id = 'drivejs';
+        if (!document.getElementById(id)) {
+          script.id = id;
+          script.src = 'https://apis.google.com/js/client.js';
+          script.onload = this.handleClientLoad.bind(this);
+          document.body.appendChild(script);
+        }
+      },
+      handleClientLoad: function() {
+        // Poll gapi until it is fully loaded. Then attempt to authorize
+        var interval = window.setInterval(function() {
+          if (gapi.auth) {
+            window.clearInterval(interval);
+            window.setTimeout(this.checkAuth.bind(this), 1);
+          }
+        }.bind(this), 100);
+      },
+      checkAuth: function() {
+        gapi.auth.authorize({
+          'client_id': CLIENT_ID,
+          'scope': SCOPES,
+          'immediate': true
+        }, this.handleAuthResult.bind(this));
+      },
+      handleAuthResult: function(authResult) {
+        var authButton = this.$.authorizeButton;
+        var filePicker = this.$.filePicker;
+        authButton.style.display = 'none';
+        filePicker.style.display = 'none';
+        if (authResult && !authResult.error) {
+          // Access token has been successfully retrieved, requests can be sent to the API.
+          filePicker.style.display = 'block';
+          filePicker.onchange = this.uploadFile.bind(this);
+        } else {
+          // No access token could be retrieved, show the button to start the authorization flow.
+          authButton.style.display = 'block';
+          authButton.onclick = function() {
+            gapi.auth.authorize({
+              'client_id': CLIENT_ID,
+              'scope': SCOPES,
+              'immediate': false
+            }, this.handleAuthResult.bind(this));
+          }.bind(this);
+        }
+      },
+      uploadFile: function(e) {
+        gapi.client.load('drive', 'v2', function() {
+          var file = this.$.filePicker.files[0];
+          this.insertFile(file);
+        }.bind(this));
+      },
+      insertFile: function(fileData, callback) {
+        const boundary = '-------314159265358979323846';
+        const delimiter = "\r\n--" + boundary + "\r\n";
+        const close_delim = "\r\n--" + boundary + "--";
+
+        var reader = new FileReader();
+        reader.readAsBinaryString(fileData);
+        reader.onload = function(e) {
+          var contentType = fileData.type || 'application/octet-stream';
+          var metadata = {
+            'title': fileData.name,
+            'mimeType': contentType
+          };
+
+          var base64Data = btoa(reader.result);
+          var multipartRequestBody =
+              delimiter +
+              'Content-Type: application/json\r\n\r\n' +
+              JSON.stringify(metadata) +
+              delimiter +
+              'Content-Type: ' + contentType + '\r\n' +
+              'Content-Transfer-Encoding: base64\r\n' +
+              '\r\n' +
+              base64Data +
+              close_delim;
+
+          var request = gapi.client.request({
+              'path': '/upload/drive/v2/files',
+              'method': 'POST',
+              'params': {'uploadType': 'multipart'},
+              'headers': {
+                'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+              },
+              'body': multipartRequestBody});
+          if (!callback) {
+            callback = function(file) {
+              console.log(file)
+            };
+          }
+          request.execute(callback);
+        }
+      }
+    });
+  })(window, document);
+  </script>
+</polymer-element>
